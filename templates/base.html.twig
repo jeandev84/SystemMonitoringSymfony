@@ -2,11 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Bienvenue sur mon site{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/f3bbfa8c7d.js" crossorigin="anonymous" defer></script>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        {% include('partials/header.html.twig') %}
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% include('partials/footer.html.twig') %}
     </body>
 </html>

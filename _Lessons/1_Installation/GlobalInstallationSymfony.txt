@@ -1,0 +1,130 @@
+$ wget https://get.symfony.com/cli/installer -O - | bash
+--2020-03-12 19:13:13--  https://get.symfony.com/cli/installer
+Распознаётся get.symfony.com (get.symfony.com)… 13.227.220.93, 13.227.220.92, 13.227.220.41, ...
+Подключение к get.symfony.com (get.symfony.com)|13.227.220.93|:443... ошибка: Время ожидания соединения истекло.
+Подключение к get.symfony.com (get.symfony.com)|13.227.220.92|:443... ошибка: Время ожидания соединения истекло.
+Подключение к get.symfony.com (get.symfony.com)|13.227.220.41|:443... ошибка: Время ожидания соединения истекло.
+Подключение к get.symfony.com (get.symfony.com)|13.227.220.107|:443... соединение установлено.
+HTTP-запрос отправлен. Ожидание ответа… 200 OK
+Длина: 4713 (4,6K) [binary/octet-stream]
+Сохранение в: «STDOUT»
+
+-                                        100%[===============================================================================>]   4,60K  --.-KB/s    за 0s
+
+/2020-03-12 19:14:48 (102 MB/s) - записан в stdout [4713/4713]
+
+Symfony CLI installer
+
+Environment check
+  [*] cURL is installed
+  [*] Gzip is installed
+  [*] Git is installed
+
+Download
+  Finding the latest version (platform: "linux_amd64")...
+  Downloading version 4.12.10 (https://github.com/symfony/cli/releases/download/v4.12.10/symfony_linux_amd64.gz)...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   613  100   613    0     0   2357      0 --:--:-- --:--:-- --:--:--  2357
+100 7343k  100 7343k    0     0   271k      0  0:00:26  0:00:26 --:--:--  216k
+  Uncompress binary...
+  Making the binary executable...
+  Installing the binary into your home directory...
+  The binary was saved to: /home/jeandev/.symfony/bin/symfony
+
+The Symfony CLI v4.12.10 was installed successfully!
+
+Add this to your shell configuration file:
+  export PATH="$HOME/.symfony/bin:$PATH"
+Start a new shell, and then run 'symfony'
+
+Or install it globally on your system:
+  mv /home/jeandev/.symfony/bin/symfony /usr/local/bin/symfony
+
+==========================================
+$ sudo symfony new monitoring --version=4.3
+$ composer require symfony/orm-pack
+
+==========================================
+$ mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 202
+Server version: 10.3.22-MariaDB-1:10.3.22+maria~bionic mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+# On cree un nouveau utilisateur pour se connecter a la base de donnees
+MariaDB [(none)]> CREATE USER 'jeanyao'@'%' IDENTIFIED BY '123456'
+Query OK, 0 rows affected (0.00 sec)
+
+# Appliquer ses privileges
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON '*' TO 'jeanyao'@'%' WITH GRANT OPTION;
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]> use mysql; # mysql is name of created database
+Database changed
+MariaDB [mysql]> SHOW TABLES;
+Empty set (0.001 sec)
+
+# MariaDB [mysql]> SELECT * FROM user;
+MariaDB [mysql]> SELECT User FROM user;
+MariaDB [mysql]>exit;
+
+==================================================
+$ mysql -ujeanyao -p123456
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 202
+Server version: 10.3.22-MariaDB-1:10.3.22+maria~bionic mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE monitoring;
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]> SHOW DATABASES;
++------------------------+
+| Database               |
++------------------------+
+| agenceimmobiliere      |
+| animals                |
+| biblio_api             |
+| db_login_system        |
+| fosuser                |
+| information_schema     |
+| laracasts_php          |
+| liorsymfo_blog         |
+| monitoring             |
+| mvclikepro             |
+| mvclikeprologin        |
+| mysql                  |
+| performance_schema     |
+| recettes               |
+| shop                   |
+| skills                 |
+| symfony_auth           |
+| symfony_code_free_blog |
+| symfony_easy_admin     |
+| symfony_editor         |
+| symfony_geo            |
+| symfonyskills          |
+| voitures               |
+| webshake_blog          |
++------------------------+
+24 rows in set (0.001 sec)
+
+MariaDB [(none)]>
+
+=======================================================
+On renseigne l'utilisateur cree dans le fichier .env :
+
+DATABASE_URL=mysql://jeanyao:123456@127.0.0.1:3306/monitoring
+
+======================================================
+/var/www/html/SystemMonitoringSymfony $ sudo code . --user-data-dir="~/.vscode-root"
+
+
