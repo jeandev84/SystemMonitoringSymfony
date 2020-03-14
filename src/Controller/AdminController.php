@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use App\Entity\Website;
@@ -11,13 +10,45 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+
+/**
+ * Class AdminController
+ * @package App\Controller
+*/
 class AdminController extends AbstractController
 {
+
+    /**
+     * @Route("/admin/login", name="login")
+     * @param AuthenticationUtils $utils
+     * @return Response
+    */
+    public function login(AuthenticationUtils $utils)
+    {
+        $error = $utils->getLastAuthenticationError();
+        return $this->render('admin/login.html.twig', [
+            'error' => $error !== null
+        ]);
+    }
+
+
+    /**
+     * @Route("/admin/logout", name="logout")
+    */
+    public function logout()
+    {
+    }
+
     /**
      * @Route("/admin", name="admin.dashboard")
+     * @IsGranted("ROLE_ADMIN")
      * @param WebsiteRepository $websiteRepository
      * @return Response
+     *
+     * IsGranted() sera interessant pour gerer certaines routes en particulier
     */
     public function index(WebsiteRepository $websiteRepository)
     {

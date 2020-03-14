@@ -2,14 +2,43 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Admin;
 use App\Entity\Website;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
+
+    /**
+     * @var UserPasswordEncoderInterface
+     */
+    private $encoder;
+
+    /**
+     * AppFixtures constructor.
+     * @param UserPasswordEncoderInterface $encoder
+   */
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->encoder = $encoder;
+    }
+
+    /**
+     * @param ObjectManager $manager
+   */
     public function load(ObjectManager $manager)
     {
+        # Create a new Admin
+        $admin = new Admin();
+        $admin->setEmail('admin@site.ru')
+              ->setPassword('admin123!');
+        $encoded = $this->encoder->encodePassword($admin, $admin->getPassword());
+        /* dd($encoded); */
+        $admin->setPassword($encoded);
+        $manager->persist($admin);
+
         # Youtube
         $website = new Website();
         $website->setName('Youtube')
@@ -46,8 +75,6 @@ class AppFixtures extends Fixture
             ->setUrl('http://github.com/fakeurl');
 
         $manager->persist($website);
-
-
 
         # Website Fake
         $website = new Website();

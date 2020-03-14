@@ -1,0 +1,7 @@
+MariaDB [monitoring]> select * from admin;
++----+---------------+-----------+
+| id | email         | password  |
++----+---------------+-----------+
+|  1 | admin@site.ru | admin123! |
++----+---------------+-----------+
+1 row in set (0.002 sec)
