@@ -20,7 +20,13 @@
      <h3>Votre site de monitoring en ligne</h3>
   </div>
 
-
+  <div class="info text-center">
+      Run commands:
+      <small>
+          $ bin/console doctrine:fixtures:load,
+          $ bin/console check:status
+      </small>
+  </div>
   <div class="conteneur">
       {% for currentStatus in status %}
           <div class="element px-3">
