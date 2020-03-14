@@ -35,6 +35,24 @@ class HomeController extends AbstractController
 
 
     /**
+     * @Route("/websites/clean", name="website.clean")
+     * @param StatusRepository $statusRepository
+     * @return void
+     */
+    public function clean(StatusRepository $statusRepository)
+    {
+        // Supprimer tous nos status
+        $statusRepository->cleanStatusHistory();
+
+        // Ajout de notification
+        $this->addFlash('warning', "L'Historique du status a bien ete efface.");
+
+        // Se rediriger vers l'acceuil
+        return $this->redirectToRoute('home');
+    }
+
+
+    /**
      * @Route("/websites/analyze", name="website.analyze")
      * @param WebsiteRepository $websiteRepository
      * @param EntityManagerInterface $entityManager
