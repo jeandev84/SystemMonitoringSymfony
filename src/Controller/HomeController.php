@@ -14,6 +14,20 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
+     * @var \Swift_Mailer
+   */
+    private $mailer;
+
+    /**
+     * HomeController constructor.
+     * @param \Swift_Mailer $mailer
+    */
+    public function __construct(\Swift_Mailer $mailer)
+    {
+        $this->mailer = $mailer;
+    }
+
+    /**
      * @Route("/", name="home")
      * @param WebsiteRepository $websiteRepository
      * @param StatusRepository $statusRepository
@@ -84,6 +98,23 @@ class HomeController extends AbstractController
 
             /* dd($status); */
             $entityManager->persist($status);
+
+            /*
+               Si on arriva pas a recuperer le code status
+               on envoyera un message afin d'informer que le site est hors ligne
+            */
+            if($status->getCode() === 0)
+            {
+                $message = (new \Swift_Message('SymfonyMonitoring - Probleme'))
+                           ->setFrom('info@monitoring.com')
+                           ->setTo('contact@site.ru')
+                           ->setBody(
+                               $this->renderView('admin/notification/email.html.twig',
+                               compact('status', 'site')
+                           ), 'text/html');
+
+                $this->mailer->send($message);
+            }
         }
 
         // Sauvegarde les changements dans la base de donnees
