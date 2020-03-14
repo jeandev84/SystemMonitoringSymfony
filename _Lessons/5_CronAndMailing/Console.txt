@@ -1,0 +1,43 @@
+CREATE COMMAND
+
+$ bin/console make:command
+Choose a command name (e.g. app:victorious-elephant):
+> check:status
+
+created: src/Command/CheckStatusCommand.php
+
+
+Success!
+
+
+Next: open your new command class and customize it!
+Find the documentation at https://symfony.com/doc/current/console.html
+
+==================================================
+LANCER LA COMMANDE
+$ bin/console check:status
+[OK] You have a new command! Now make it your own! Pass --help to see your options.
+
+==================================================
+HELP
+$ bin/console check:status --help
+Description:
+  Add a short description for your command
+
+Usage:
+  check:status [options] [--] [<arg1>]
+
+Arguments:
+  arg1                  Argument description
+
+Options:
+      --option1         Option description
+  -h, --help            Display this help message
+  -q, --quiet           Do not output any message
+  -V, --version         Display this application version
+      --ansi            Force ANSI output
+      --no-ansi         Disable ANSI output
+  -n, --no-interaction  Do not ask any interactive question
+  -e, --env=ENV         The Environment name. [default: "dev"]
+      --no-debug        Switches off debug mode.
+  -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug

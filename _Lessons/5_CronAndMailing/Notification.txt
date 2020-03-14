@@ -1,0 +1,37 @@
+Intallation de Swift mailer
+================================================
+$ composer require symfony/swiftmailer-bundle
+
+================================================
+Installation de maildev en local
+$ sudo apt-get install npm
+$ npm install -g maildev
+
+$ sudo chmod -R 777 /path/to/folder
+$ sudo chmod -R 777 /usr/local/lib
+$ sudo chmod -R 777 /usr/local/lib/*
+
+==================================================
+Apres creation de notre bundle swiftmailer
+dans le fichier .env il faut configurer
+MAILER_URL=smtp://localhost
+
+====================================================
+Une fois que maildev est installe
+apres execution de la commande
+$ npm install -g maildev
+
+On execute:
+$ maildev
+MailDev webapp running at http://0.0.0.0:1080
+MailDev SMTP Server running at http://0.0.0.0:1025
+
+Et on enregistre dans le fichier .env
+###> symfony/swiftmailer ###
+MAILER_URL=smtp://localhost:1025
+###< symfony/swiftmailer ###
+
+Lancer le lien http://localhost:1025/
+Et il s'affichera une page pour envoiyer des mails.
+
+
