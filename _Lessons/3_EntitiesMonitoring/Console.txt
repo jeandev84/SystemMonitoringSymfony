@@ -1,0 +1,339 @@
+$ bin/console make:entity
+
+Class name of the entity to create or update (e.g. GrumpyElephant):
+> Website
+
+created: src/Entity/Website.php
+created: src/Repository/WebsiteRepository.php
+
+Entity generated! Now let's add some fields!
+You can always add more fields later manually or by re-running this command.
+
+New property name (press <return> to stop adding fields):
+> url
+
+Field type (enter ? to see all types) [string]:
+>
+
+Field length [255]:
+>
+
+Can this field be null in the database (nullable) (yes/no) [no]:
+>
+
+updated: src/Entity/Website.php
+
+Add another property? Enter the property name (or press <return> to stop adding fields):
+> name
+
+Field type (enter ? to see all types) [string]:
+>
+
+Field length [255]:
+>
+
+Can this field be null in the database (nullable) (yes/no) [no]:
+>
+
+updated: src/Entity/Website.php
+
+Add another property? Enter the property name (or press <return> to stop adding fields):
+>
+
+
+
+Success!
+
+
+Next: When you're ready, create a migration with make:migration
+
+$ bin/console make:entity
+
+Class name of the entity to create or update (e.g. GentleKangaroo):
+> Admin
+
+created: src/Entity/Admin.php
+created: src/Repository/AdminRepository.php
+
+Entity generated! Now let's add some fields!
+You can always add more fields later manually or by re-running this command.
+
+New property name (press <return> to stop adding fields):
+> email
+
+Field type (enter ? to see all types) [string]:
+>
+
+Field length [255]:
+>
+
+Can this field be null in the database (nullable) (yes/no) [no]:
+>
+
+updated: src/Entity/Admin.php
+
+Add another property? Enter the property name (or press <return> to stop adding fields):
+> password
+
+Field type (enter ? to see all types) [string]:
+>
+
+Field length [255]:
+>
+
+Can this field be null in the database (nullable) (yes/no) [no]:
+>
+
+updated: src/Entity/Admin.php
+
+Add another property? Enter the property name (or press <return> to stop adding fields):
+>
+
+
+
+Success!
+
+
+Next: When you're ready, create a migration with make:migration
+
+$ bin/console make:entity
+
+Class name of the entity to create or update (e.g. OrangeGnome):
+> Status
+
+created: src/Entity/Status.php
+created: src/Repository/StatusRepository.php
+
+Entity generated! Now let's add some fields!
+You can always add more fields later manually or by re-running this command.
+
+New property name (press <return> to stop adding fields):
+> code
+
+Field type (enter ? to see all types) [string]:
+> integer
+
+Can this field be null in the database (nullable) (yes/no) [no]:
+>
+
+updated: src/Entity/Status.php
+
+Add another property? Enter the property name (or press <return> to stop adding fields):
+> reportedAt
+
+Field type (enter ? to see all types) [datetime]:
+>
+
+Can this field be null in the database (nullable) (yes/no) [no]:
+>
+
+updated: src/Entity/Status.php
+
+Add another property? Enter the property name (or press <return> to stop adding fields):
+>
+
+
+
+Success!
+
+
+Next: When you're ready, create a migration with make:migration
+
+====================================================================
+$ bin/console make:migration
+
+
+Success!
+
+
+Next: Review the new migration "src/Migrations/Version20200313203543.php"
+Then: Run the migration with php bin/console doctrine:migrations:migrate
+See https://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html
+===================================================================
+
+$ bin/console doctrine:migrations:migrate
+
+                    Application Migrations
+
+
+WARNING! You are about to execute a database migration that could result in schema changes and data loss. Are you sure you wish to continue? (y/n)y
+Migrating up to 20200313203543 from 0
+
+  ++ migrating 20200313203543
+
+     -> CREATE TABLE admin (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB
+     -> CREATE TABLE website (id INT AUTO_INCREMENT NOT NULL, url VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB
+     -> CREATE TABLE status (id INT AUTO_INCREMENT NOT NULL, code INT NOT NULL, reported_at DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB
+
+  ++ migrated (took 277ms, used 16M memory)
+
+  ------------------------
+
+  ++ finished in 282.2ms
+  ++ used 16M memory
+  ++ 1 migrations executed
+  ++ 3 sql queries
+========================================================================
+
+Packages:
+$ sudo apt-get install php-mysql
+
+========================================================================
+$ mysql -uroot -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 40
+Server version: 10.3.22-MariaDB-1:10.3.22+maria~bionic mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++------------------------+
+| Database               |
++------------------------+
+| agenceimmobiliere      |
+| animals                |
+| biblio_api             |
+| db_login_system        |
+| fosuser                |
+| information_schema     |
+| laracasts_php          |
+| liorsymfo_blog         |
+| monitoring             |
+| mvclikepro             |
+| mvclikeprologin        |
+| mysql                  |
+| performance_schema     |
+| recettes               |
+| shop                   |
+| skills                 |
+| symfony_auth           |
+| symfony_code_free_blog |
+| symfony_easy_admin     |
+| symfony_editor         |
+| symfony_geo            |
+| symfonyskills          |
+| voitures               |
+| webshake_blog          |
++------------------------+
+24 rows in set (0.031 sec)
+
+MariaDB [(none)]> use monitoring;
+Database changed
+MariaDB [monitoring]> show tables;
+Empty set (0.000 sec)
+
+MariaDB [monitoring]> show tables;
++----------------------+
+| Tables_in_monitoring |
++----------------------+
+| admin                |
+| migration_versions   |
+| status               |
+| website              |
++----------------------+
+4 rows in set (0.000 sec)
+
+MariaDB [monitoring]>exit;
+bye
+===================================================================
+$ mysql -uroot -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 50
+Server version: 10.3.22-MariaDB-1:10.3.22+maria~bionic mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show tables;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use monitoring;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [monitoring]> show tables;
++----------------------+
+| Tables_in_monitoring |
++----------------------+
+| admin                |
+| migration_versions   |
+| status               |
+| website              |
++----------------------+
+4 rows in set (0.000 sec)
+
+MariaDB [monitoring]> show columns from status;
++-------------+----------+------+-----+---------+----------------+
+| Field       | Type     | Null | Key | Default | Extra          |
++-------------+----------+------+-----+---------+----------------+
+| id          | int(11)  | NO   | PRI | NULL    | auto_increment |
+| code        | int(11)  | NO   |     | NULL    |                |
+| reported_at | datetime | NO   |     | NULL    |                |
+| website_id  | int(11)  | YES  | MUL | NULL    |                |
++-------------+----------+------+-----+---------+----------------+
+4 rows in set (0.001 sec)
+
+
+MariaDB [monitoring]> select * from website;
++----+---------------------+---------+
+| id | url                 | name    |
++----+---------------------+---------+
+|  1 | http://fake.url.com | Example |
++----+---------------------+---------+
+1 row in set (0.000 sec)
+
+MariaDB [monitoring]> select * from website;
++----+---------------------------+------------+
+| id | url                       | name       |
++----+---------------------------+------------+
+|  2 | http://youtube.com        | Youtube    |
+|  3 | http://facebook.com       | Facebook   |
+|  4 | http://google.com         | Google     |
+|  5 | http://github.com         | GitHub     |
+|  6 | http://github.com/fakeurl | GithubTest |
+|  7 | http://fakewebsite.com    | Fake       |
++----+---------------------------+------------+
+6 rows in set (0.001 sec)
+
+MariaDB [monitoring]> select * from status;
++----+------+---------------------+------------+
+| id | code | reported_at         | website_id |
++----+------+---------------------+------------+
+|  1 |  301 | 2020-03-14 01:48:52 |          2 |
+|  2 |  302 | 2020-03-14 01:48:52 |          3 |
+|  3 |  301 | 2020-03-14 01:48:52 |          4 |
+|  4 |  301 | 2020-03-14 01:48:53 |          5 |
+|  5 |  301 | 2020-03-14 01:48:53 |          6 |
+|  6 |  302 | 2020-03-14 01:48:53 |          7 |
++----+------+---------------------+------------+
+6 rows in set (0.000 sec)
+
+MariaDB [monitoring]> select * from status;
++----+------+---------------------+------------+
+| id | code | reported_at         | website_id |
++----+------+---------------------+------------+
+|  1 |  301 | 2020-03-14 01:48:52 |          2 |
+|  2 |  302 | 2020-03-14 01:48:52 |          3 |
+|  3 |  301 | 2020-03-14 01:48:52 |          4 |
+|  4 |  301 | 2020-03-14 01:48:53 |          5 |
+|  5 |  301 | 2020-03-14 01:48:53 |          6 |
+|  6 |  302 | 2020-03-14 01:48:53 |          7 |
+|  7 |  301 | 2020-03-14 01:51:11 |          2 |
+|  8 |  302 | 2020-03-14 01:51:12 |          3 |
+|  9 |  301 | 2020-03-14 01:51:12 |          4 |
+| 10 |  301 | 2020-03-14 01:51:13 |          5 |
+| 11 |  301 | 2020-03-14 01:51:13 |          6 |
+| 12 |  302 | 2020-03-14 01:51:13 |          7 |
++----+------+---------------------+------------+
+12 rows in set (0.001 sec)
+
+
+
+
+===========================================
+$ composer require debug --dev

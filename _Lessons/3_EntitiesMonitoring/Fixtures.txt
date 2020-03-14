@@ -1,0 +1,7 @@
+$ composer require --dev doctrine/doctrine-fixtures-bundle /
+$ composer require doctrine/doctrine-fixtures-bundle --dev
+
+$ bin/console doctrine:fixtures:load
+
+
+
