@@ -3,7 +3,58 @@
 {% block title %}Acceuil{% endblock %}
 
 {% block body %}
+<style>
+    .element {
+        width: 33%;
+    }
+
+    .conteneur {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+</style>
 <div class="container">
-  <h1 class="text-center my-5">Acceuil</h1>
+  <div class="head text-center my-5">
+     <h1>Acceuil</h1>
+     <h3>Votre site de monitoring en ligne</h3>
+  </div>
+
+  <div class="d-flex justify-content-around my-5">
+      <a href="{{ path('website.analyze') }}" class="btn btn-info">
+          <i class="fas fa-tools"></i>
+          Lancer le diagnostic
+      </a>
+  </div>
+
+  <div class="conteneur">
+      {% for currentStatus in status %}
+          <div class="element px-3">
+              <div class="card bg-success text-white mb-3 website-card">
+                  <div class="card-header website-card-title">
+                      <h4>{{ currentStatus.website.name }}</h4>
+                      <small>{{ currentStatus.website.url }}</small>
+                  </div>
+                  <div class="card-body">
+                      <div class="website-card-code">
+                          HTTP: {{ currentStatus.code }}
+                          {% if currentStatus.code == 200 or currentStatus.code == 301 or currentStatus.code == 302 %}
+                          <i class="fas fa-check-circle"></i>
+                          {% elseif currentStatus.code == 404 %}
+                              <i class="fas fa-exclamation-triangle"></i>
+                          {% else %}
+                              <i class="fas fa-exclamation-circle"></i>
+                          {% endif %}
+                      </div>
+                  </div>
+                  <div class="card-footer">
+                      <a href="{{ path('website.show', {'id': currentStatus.website.id}) }}" class="btn btn-lg btn-white">
+                          Voir la fiche
+                      </a>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
 </div>
 {% endblock %}

@@ -1,0 +1,239 @@
+80:/var/www/SystemMonitoringSymfony$ bin/console make:entity
+
+ Class name of the entity to create or update (e.g. GrumpyElephant):
+ > Website
+
+ created: src/Entity/Website.php
+ created: src/Repository/WebsiteRepository.php
+
+ Entity generated! Now let's add some fields!
+ You can always add more fields later manually or by re-running this command.
+
+ New property name (press <return> to stop adding fields):
+ > url
+
+ Field type (enter ? to see all types) [string]:
+ >
+
+ Field length [255]:
+ >
+
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ >
+
+ updated: src/Entity/Website.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ > name
+
+ Field type (enter ? to see all types) [string]:
+ >
+
+ Field length [255]:
+ >
+
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ >
+
+ updated: src/Entity/Website.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ >
+
+
+
+  Success!
+
+
+ Next: When you're ready, create a migration with make:migration
+
+jeandev@jeandev-Lenovo-G580:/var/www/SystemMonitoringSymfony$ bin/console make:entity
+
+ Class name of the entity to create or update (e.g. GentleKangaroo):
+ > Admin
+
+ created: src/Entity/Admin.php
+ created: src/Repository/AdminRepository.php
+
+ Entity generated! Now let's add some fields!
+ You can always add more fields later manually or by re-running this command.
+
+ New property name (press <return> to stop adding fields):
+ > email
+
+ Field type (enter ? to see all types) [string]:
+ >
+
+ Field length [255]:
+ >
+
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ >
+
+ updated: src/Entity/Admin.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ > password
+
+ Field type (enter ? to see all types) [string]:
+ >
+
+ Field length [255]:
+ >
+
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ >
+
+ updated: src/Entity/Admin.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ >
+
+
+
+  Success!
+
+
+ Next: When you're ready, create a migration with make:migration
+
+jeandev@jeandev-Lenovo-G580:/var/www/SystemMonitoringSymfony$ clear
+jeandev@jeandev-Lenovo-G580:/var/www/SystemMonitoringSymfony$ bin/console make:entity
+
+ Class name of the entity to create or update (e.g. OrangeGnome):
+ > Status
+
+ created: src/Entity/Status.php
+ created: src/Repository/StatusRepository.php
+
+ Entity generated! Now let's add some fields!
+ You can always add more fields later manually or by re-running this command.
+
+ New property name (press <return> to stop adding fields):
+ > code
+
+ Field type (enter ? to see all types) [string]:
+ > integer
+
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ >
+
+ updated: src/Entity/Status.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ > reportedAt
+
+ Field type (enter ? to see all types) [datetime]:
+ >
+
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ >
+
+ updated: src/Entity/Status.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ >
+
+
+
+  Success!
+
+
+ Next: When you're ready, create a migration with make:migration
+
+jeandev@jeandev-Lenovo-G580:/var/www/SystemMonitoringSymfony$ clear
+jeandev@jeandev-Lenovo-G580:/var/www/SystemMonitoringSymfony$ bin/console make:entity
+
+ Class name of the entity to create or update (e.g. OrangeGnome):
+ > Status
+
+ Your entity already exists! So let's add some new fields!
+
+ New property name (press <return> to stop adding fields):
+ > website
+
+ Field type (enter ? to see all types) [string]:
+ > ?
+
+Main types
+  * string
+  * text
+  * boolean
+  * integer (or smallint, bigint)
+  * float
+
+Relationships / Associations
+  * relation (a wizard 🧙 will help you build the relation)
+  * ManyToOne
+  * OneToMany
+  * ManyToMany
+  * OneToOne
+
+Array/Object Types
+  * array (or simple_array)
+  * json
+  * object
+  * binary
+  * blob
+
+Date/Time Types
+  * datetime (or datetime_immutable)
+  * datetimetz (or datetimetz_immutable)
+  * date (or date_immutable)
+  * time (or time_immutable)
+  * dateinterval
+
+Other Types
+  * decimal
+  * guid
+  * json_array
+
+
+ Field type (enter ? to see all types) [string]:
+ > relation
+
+ What class should this entity be related to?:
+ > Website
+
+What type of relationship is this?
+ ------------ ---------------------------------------------------------------------
+  Type         Description
+ ------------ ---------------------------------------------------------------------
+  ManyToOne    Each Status relates to (has) one Website.
+               Each Website can relate to (can have) many Status objects
+
+  OneToMany    Each Status can relate to (can have) many Website objects.
+               Each Website relates to (has) one Status
+
+  ManyToMany   Each Status can relate to (can have) many Website objects.
+               Each Website can also relate to (can also have) many Status objects
+
+  OneToOne     Each Status relates to (has) exactly one Website.
+               Each Website also relates to (has) exactly one Status.
+ ------------ ---------------------------------------------------------------------
+
+ Relation type? [ManyToOne, OneToMany, ManyToMany, OneToOne]:
+ > ManyToOne
+
+ Is the Status.website property allowed to be null (nullable)? (yes/no) [yes]:
+ >
+
+ Do you want to add a new property to Website so that you can access/update Status objects from it - e.g. $website->getStatuses()? (yes/no) [yes]:
+ >
+
+ A new property will also be added to the Website class so that you can access the related Status objects from it.
+
+ New field name inside Website [statuses]:
+ >
+
+ updated: src/Entity/Status.php
+ updated: src/Entity/Website.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ >
+
+
+
+  Success!
+
+
+ Next: When you're ready, create a migration with make:migration
