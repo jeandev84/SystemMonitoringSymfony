@@ -21,7 +21,7 @@
             {% for status in website.statuses %}
                 <tr>
                     <th scope="row">{{ website.url }}</th>
-                    <td>{{ status.reportedAt | date('Y-m-d') }}</td>
+                    <td>{{ status.reportedAt | date('d-m-Y H-i-s') }}</td>
                     <td>{{ status.code }}</td>
                     <td>
                         {% if status.code == 200 or status.code == 301 or status.code == 302 %}
