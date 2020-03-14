@@ -15,16 +15,24 @@
             Acceuil
         </a>
     </div>
-    <ul class="nav navbar-nav">
-        <li class="active">
-            <a href="#">Dashboard Admin</a>
-        </li>
-    </ul>
-    <ul class="nav navbar-nav">
-        <li class="active">
-            <a href="#">Connexion</a>
-        </li>
-    </ul>
+     <ul class="nav navbar-nav">
+         <li class="active">
+             <a href="{{ path('admin.dashboard') }}">Dashboard Admin</a>
+         </li>
+     </ul>
+     {% if  app.user %}
+     <ul class="nav navbar-nav">
+         <li class="active">
+             <a href="{{ path('logout') }}">Deconnexion</a>
+         </li>
+     </ul>
+     {% else %}
+     <ul class="nav navbar-nav">
+         <li class="active">
+                 <a href="{{ path('login') }}">Connexion</a>
+         </li>
+      </ul>
+     {% endif %}
  </div>
 </nav>
 
