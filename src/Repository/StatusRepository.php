@@ -33,6 +33,18 @@ class StatusRepository extends ServiceEntityRepository
                     ;
     }
 
+
+    /**
+     * @return mixed
+    */
+    public function cleanStatusHistory()
+    {
+        return $this->createQueryBuilder('s')
+                    ->delete()
+                    ->getQuery()
+                    ->getResult();
+    }
+
     // /**
     //  * @return Status[] Returns an array of Status objects
     //  */
